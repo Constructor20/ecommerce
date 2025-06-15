@@ -1,0 +1,17 @@
+I- Étapes Installation Base de donnée (BDD)
+
+Suivez bien les consignes et notez bien les caractères dans le input indiquer, il sera précisez si il y a des informations dynamiques à placer dedans par des "**" donc comme ceci (**vidéo**) celà signifieras que vous pourrez placer la donnée que vous souhaitez selon la description du tableau ou objet quelconque.
+
+N'hésitez pas à me dm sur discord si besoin de toute information suplémentaire
+
+1) Cliquer dans phMyadmin sur Nouvelle base de données et mettez comme nom "bdd_cpx"
+2) Créer 1 table au nom de "users"
+
+3- Dans la table users vous devez mettre:
+(si vous voyez qu'il manque des informations comme "Valeur par défauts" c'est tout simplement qu'ils n'ont pas lieux d'être modifier ou toucher)
+
+Nom: id     Type:INT    Valeurs:255     Null Index: PRIMARY     
+Nom:username      Type:varchar(30)    Valeurs:255     Interclassement: utf8mb4_general_ci   
+Nom:email      Type:varchar(50)    Valeurs:255     Interclassement: utf8mb4_general_ci   
+Nom:password     Type:varchar(255)    Valeurs:255     Interclassement: utf8mb4_general_ci   
+
