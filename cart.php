@@ -211,11 +211,10 @@ main {
                     <button type="submit" class="btn btn-primary">
                         Finaliser la Commande (€<?php echo number_format($total, 2, ',', ' '); ?>)
                     </button>
-                    <button onclick="window.location.href='index2.php'" class="btn btn-secondary" style="margin-top: 10px;">
-                    ← Retourner au Catalogue
-                    </button>
-
                 </form>
+                <button onclick="window.location.href='index2.php'" class="btn btn-secondary" style="margin-top: 10px;">
+                    ← Retourner au Catalogue
+                </button>
             </div>
         </div>
 
