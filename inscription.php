@@ -72,11 +72,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         margin: 0;
         font-family: Arial, sans-serif;
         background-color: #f0f0f0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    main {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 80px; /* hauteur approximative de ta navbar */
+        padding-bottom: 80px; /* pour ne pas être masqué par le footer */
     }
 
     .signup-container {
+        width: 100%;
         max-width: 400px;
-        margin: 60px auto;
         padding: 30px;
         background-color: white;
         border-radius: 10px;
@@ -134,29 +146,127 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         margin-top: 10px;
         color: red;
     }
+
+    .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+    padding: 10px 20px;
+    z-index: 1000;
+}
+
+.navbar-logo {
+    height: 50px;
+    width: 50px;
+    object-fit: contain;
+}
+
+.search-bar form {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+}
+
+.search-bar input[type="text"] {
+    border: none;
+    outline: none;
+    padding: 8px;
+    border-radius: 20px;
+    font-size: 14px;
+    width: 200px;
+}
+
+.search-bar button {
+    background: none;
+    border: none;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.search-icon {
+    height: 20px;
+    width: 20px;
+}
+
+.navbar-right a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: background-color 0.3s ease;
+}
+
+.navbar-right a:hover {
+    background-color: #444;
+    border-radius: 5px;
+}
+
+.cart-icon {
+    height: 30px;
+    width: 30px;
+    vertical-align: middle;
+}
 </style>
 
 <body>
-    <?php include 'navbar.php';?>
-    <div class="signup-container">
-        <h2>Inscription</h2>
-        <form action="" method="POST" onsubmit="return validateForm()">
-            <label for="username">Nom d'utilisateur :</label>
-            <input type="text" id="username" name="username" required>
+    <div class="navbar">
+        <div class="navbar-left">
+            <a href="index.php"><img src="images/logo.png" alt="Logo" class="navbar-logo"></a>
+        </div>
 
-            <label for="email">Email :</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="password">Mot de passe :</label>
-            <input type="password" id="password" name="password" required>
-        
-            <label for="confirm-password">Confirmer le mot de passe :</label>
-            <input type="password" id="confirm-password" name="confirm-password" required>
-
-            <input  type="submit" value="S'inscrire">
-        </form>
-        <p id="error-msg"></p>
+        <div class="search-bar">
+            <form action="search.php" method="get" style="display: flex; align-items: center;">
+                <input type="text" name="query" placeholder="Rechercher une vidéo ..." required>
+                <button type="submit" style="background: none; border: none; padding: 0; margin-left: 5px;">
+                    <img src="images/search.png" alt="Rechercher" class="search-icon">
+                </button>
+            </form>
+        </div>
+        <div class="navbar-right">
+            <?php if (!isset($_SESSION['username'])): ?>
+                <a href="accueil.php" title="Accueil">Accueil</a>
+                <a href="connexion.php" title="Connexion">Connexion</a>
+            <?php else: ?>
+                <a href="accueil.php" title="Accueil">Accueil</a>
+                <a href="compte.php" title="Compte utilisateur">
+                    <img src="images/user.png" alt="Utilisateur" class="cart-icon">
+                </a>
+                <a href="cart.php" title="Panier">
+                    <img src="images/panier.png" alt="Panier" class="cart-icon">
+                </a>
+                <a href="logout.php" title="Déconnexion">
+                    <img src="images/exit.png" alt="Déconnexion" class="cart-icon">
+                </a>
+            <?php endif; ?>
+        </div>
     </div>
+    <main>
+        <div class="signup-container">
+            <h2>Inscription</h2>
+            <form action="" method="POST" onsubmit="return validateForm()">
+                <label for="username">Nom d'utilisateur :</label>
+                <input type="text" id="username" name="username" required>
+
+                <label for="email">Email :</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="password">Mot de passe :</label>
+                <input type="password" id="password" name="password" required>
+            
+                <label for="confirm-password">Confirmer le mot de passe :</label>
+                <input type="password" id="confirm-password" name="confirm-password" required>
+
+                <input  type="submit" value="S'inscrire">
+            </form>
+            <p id="error-msg"></p>
+        </div>
+    </main>
 
     <script>
         function validateForm() {

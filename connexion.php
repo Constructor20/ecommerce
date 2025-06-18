@@ -252,6 +252,7 @@ if (session_status() === PHP_SESSION_NONE) {
         <?php if (!isset($_SESSION['username'])): ?>
             <a href="connexion.php">Connexion</a>
             <a href="inscription.php">Inscription</a>
+            <a href="connexion.php" title="Connexion">Connexion</a>
         <?php else: ?>
             <a href="accueil.php">Accueil</a>
             <a href="compte.php" title="Compte utilisateur">

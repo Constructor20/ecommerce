@@ -1,17 +1,111 @@
-I- Étapes Installation Base de donnée (BDD)
+Voici une version plus claire, structurée étape par étape et facile à suivre de ton guide d'installation de base de données (BDD) :
 
-Suivez bien les consignes et notez bien les caractères dans le input indiquer, il sera précisez si il y a des informations dynamiques à placer dedans par des "**" donc comme ceci (**vidéo**) celà signifieras que vous pourrez placer la donnée que vous souhaitez selon la description du tableau ou objet quelconque.
+---
 
-N'hésitez pas à me dm sur discord si besoin de toute information suplémentaire
+## 🗂️ Guide étape par étape : Installation de la base de données (BDD)
 
-1) Cliquer dans phMyadmin sur Nouvelle base de données et mettez comme nom "bdd_cpx"
-2) Créer 1 table au nom de "users"
+### 🔰 Avant de commencer
 
-3- Dans la table users vous devez mettre:
-(si vous voyez qu'il manque des informations comme "Valeur par défauts" c'est tout simplement qu'ils n'ont pas lieux d'être modifier ou toucher)
+* Suivez bien chaque étape dans l’ordre.
+* Lorsque vous voyez une valeur entre `**double astérisques**`, cela signifie que vous devez **remplacer par vos propres données** (par exemple : `**vidéo**` → `test.mp4`).
+* Besoin d’aide ? Contactez-moi sur Discord.
 
-Nom: id     Type:INT    Valeurs:255     Null Index: PRIMARY     
-Nom:username      Type:varchar(30)    Valeurs:255     Interclassement: utf8mb4_general_ci   
-Nom:email      Type:varchar(50)    Valeurs:255     Interclassement: utf8mb4_general_ci   
-Nom:password     Type:varchar(255)    Valeurs:255     Interclassement: utf8mb4_general_ci   
+---
 
+## 🛠️ Étape 1 : Création de la base de données
+
+1. Ouvrez **phpMyAdmin**.
+2. Cliquez sur **"Nouvelle base de données"**.
+3. Donnez-lui le nom suivant :
+
+   ```
+   bdd_cpx
+   ```
+
+---
+
+## 🧾 Étape 2 : Création de la table `users`
+
+1. Créez une table nommée :
+
+   ```
+   users
+   ```
+2. Ajoutez les colonnes suivantes :
+
+| Nom      | Type    | Taille / Valeur | Null | Index   | Interclassement      |
+| -------- | ------- | --------------- | ---- | ------- | -------------------- |
+| id       | INT     | 255             | NON  | PRIMARY | —                    |
+| username | VARCHAR | 30              | NON  | —       | utf8mb4\_general\_ci |
+| email    | VARCHAR | 50              | NON  | —       | utf8mb4\_general\_ci |
+| password | VARCHAR | 255             | NON  | —       | utf8mb4\_general\_ci |
+
+*Remarque : Si certains champs comme "valeur par défaut" ne sont pas indiqués, laissez-les tels quels.*
+
+---
+
+## 📦 Étape 3 : Création de la table `products`
+
+1. Créez une deuxième table nommée :
+
+   ```
+   products
+   ```
+2. Ajoutez les colonnes suivantes :
+
+| Nom   | Type | Taille / Valeur | Null | Index   | Interclassement      |
+| ----- | ---- | --------------- | ---- | ------- | -------------------- |
+| id    | INT  | 255             | NON  | PRIMARY | —                    |
+| name  | TEXT | —               | NON  | —       | utf8mb4\_general\_ci |
+| image | TEXT | —               | NON  | —       | utf8mb4\_general\_ci |
+| video | TEXT | —               | NON  | —       | utf8mb4\_general\_ci |
+| price | INT  | 255             | NON  | —       | —                    |
+
+---
+
+## 📝 Étape 4 : Remplissage de la table `products`
+
+* Préparez une **image** et une **vidéo** dans le dossier `images`.
+* Ajoutez un produit en remplissant les champs :
+
+  * `id`
+  * `name`
+  * `image` → Exemple : `images/nom_de_ton_image.png`
+  * `video` → Exemple : `images/nom_de_ta_video.mp4` ou un **lien YouTube**
+  * `price` → (en chiffre)
+
+⚠️ **Faites très attention à l'orthographe** lorsque vous entrez les données !
+
+---
+
+## 🔐 Étape 5 : Création de votre compte administrateur
+
+1. Créez votre **premier compte utilisateur** (dans la table `users`).
+   Ce compte sera automatiquement lié à l'`id = 0` donc considéré comme **administrateur**.
+
+2. Après création, vous serez redirigé vers la page de connexion.
+   Connectez-vous avec ce compte admin (`id = 0`).
+
+3. Une fois connecté, allez dans **"Mon Profil Admin"**.
+
+---
+
+## 🛠️ Étape 6 : Utilisation de l’interface
+
+Depuis votre interface admin, vous pouvez :
+
+* 🔄 Modifier des produits
+* ➕ Ajouter de nouveaux produits
+* 🗑️ Supprimer des produits
+
+### 🔗 Format pour les chemins d'image/vidéo
+
+* Image locale : `images/nom_de_l_image.png`
+* Vidéo locale : `images/nom_de_la_video.mp4`
+* Vidéo externe : lien YouTube (ex : `https://youtu.be/abc123`)
+
+---
+
+💬 **Besoin d’aide ?** Envoie-moi un message sur Discord à tout moment.
+
+Souhaitez-vous aussi une version PDF imprimable ou un fichier `.md` lisible dans un éditeur de code ?
